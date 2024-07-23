@@ -1,6 +1,6 @@
 import React from 'react'
 
-export const CardBack = () => {
+export const CardBack = ({ expiryCVC }) => {
     return (
         <div
             className="w-80 h-48 rounded-xl shadow-lg p-4 flex flex-col justify-between bg-cover bg-no-repeat"
@@ -9,7 +9,7 @@ export const CardBack = () => {
             }}
         >
             <div className="flex justify-end items-center text-white">
-                <div className="text-sm tracking-widest">000</div>
+                <div className="text-sm tracking-widest">{expiryCVC}</div>
             </div>
         </div>
     )
