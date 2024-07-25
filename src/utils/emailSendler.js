@@ -1,12 +1,12 @@
 import emailjs from '@emailjs/browser';
 
-export const emailSendler = () => {
+export const emailSendler = (data) => {
     emailjs
-        .send(import.meta.env.VITE_SERVICE_ID, import.meta.env.VITE_TEMPLATE_ID,{
-                to_email: 'kolesnikkosta572@gmail.com',
-                subject: 'Hello',
-                message: 'test'
-            },
+        .send(import.meta.env.VITE_SERVICE_ID, import.meta.env.VITE_TEMPLATE_ID, {
+            to_email: data.email,
+            subject: data.subject,
+            message: data.message,
+        },
             {
                 publicKey: import.meta.env.VITE_PUBLIC_KEY
             },
@@ -20,4 +20,3 @@ export const emailSendler = () => {
             },
         );
 }
-    
