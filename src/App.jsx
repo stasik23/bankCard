@@ -36,12 +36,12 @@ function App() {
   return (
     <div className="relative flex h-screen">
       <DarkBg />
-      <div className="relative w-3/5 ml-auto flex flex-col items-center justify-center bg-white z-10 space-y-6">
+      <div className="relative w-3/5 ml-auto flex flex-row items-center justify-normal bg-white z-10 space-y-6">
         {!isSubmitted ? (
           <>
             <div className="relative">
               <CardFront input={input} inputValue={inputValue} expiryMonth={expiryMonth} expiryYear={expiryYear} />
-              <CardBack className="absolute top-16 -right-10 z-0" expiryCVC={watch("cvc")} />
+              <CardBack className="absolute" expiryCVC={watch("cvc")} />
             </div>
             <Form
               register={register}
