@@ -68,12 +68,7 @@ function App() {
             <button
               className="bg-purple-500 text-white py-2 px-4 rounded-lg"
               onClick={() => {
-                handleContinueClick();
-                emailSendler({
-                  email: 'kolesnikkosta572@gmail.com',
-                  subject: 'Payment Details',
-                  message: 'Form has been reset'
-                });
+                handleContinueClick(false);
               }}
             >
               Continue
