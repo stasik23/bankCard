@@ -1,21 +1,13 @@
-import React from 'react'
-
+import React from 'react';
 
 export const CardFront = ({ input, inputValue, expiryMonth, expiryYear }) => {
-    return (
-        <div
-            className="w-80 h-48 rounded-xl shadow-lg p-4 flex flex-col justify-between bg-cover bg-no-repeat"
-            style={{
-                backgroundImage: 'url(/images/bg-card-front.png)',
-            }}
-        >
-            <div className="flex justify-between items-center text-white">
-                <div className="text-2xl tracking-widest">{inputValue}</div>
-                <div className="text-sm">
-                    <span>{expiryMonth}</span>/<span>{expiryYear}</span>
-                </div>
-            </div>
-            <div className="text-white text-xl tracking-widest">{input}</div>
-        </div>
-    )
-}
+  return (
+    <div className="relative w-96 h-56 bg-[url('/images/bg-card-front.png')] shadow-inner p-4 rounded-lg text-white flex flex-col justify-between">
+      <div className="text-2xl font-semibold tracking-widest">{inputValue || '0000 0000 0000 0000'}</div>
+      <div className="flex justify-between items-center mt-4">
+        <div className="text-lg">{input || 'JANE APPLESEED'}</div>
+        <div className="text-lg">{expiryMonth || '00'}/{expiryYear || '00'}</div>
+      </div>
+    </div>
+  );
+};
